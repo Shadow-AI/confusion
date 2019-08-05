@@ -1,0 +1,26 @@
+import java.io.*;
+
+public class cube
+{
+    public static BufferedReader bx=new BufferedReader(new InputStreamReader(System.in));
+    int calculate(int n)
+    {
+        int s=0;
+        for(int i=1;i<=n;i++)
+        {
+            s+=i;
+        }
+        return s;
+    }
+    public static void main(String a[])throws IOException
+    {
+        int s=0, n;
+        cube c=new cube();
+        for(int i=1;i<=3;i++)
+        {
+        System.out.println("Enter number");
+        n=Integer.parseInt(bx.readLine());
+        s=s+c.calculate(n);}
+        System.out.println(s);
+    }
+}
