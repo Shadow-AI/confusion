@@ -1,0 +1,44 @@
+import java.lang.Math;
+public class cube
+{
+    public static long m=1000007L;
+    long compute(long n)
+    {
+        long s=0L;
+        int countadd=0;
+        long countdivide=0L;
+        while(n%3!=0)
+        {
+            countadd++;
+            n--;
+        }
+
+        countdivide=n/3;
+
+        while(countdivide!=0)
+        {
+            s+=18;
+            countdivide--;
+        }
+        if(countadd==1)
+        {
+            s+=1;
+        }
+        else if(countadd==2)
+        {
+            s+=9;
+        }
+        return s%m;
+
+    }
+    public static void main(String []args)
+    {
+        cube c=new cube();
+        long s=1L;
+        s*=c.compute(5L);
+        s*=c.compute(500L);
+        s*=c.compute(5000000000L);
+        System.out.println(s%m);
+
+    }
+}
