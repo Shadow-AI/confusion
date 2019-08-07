@@ -1,0 +1,49 @@
+import java.lang.String;
+public class email
+{
+    private String check(String b)
+    {
+        int end=b.indexOf('@');
+        b=b.substring(0, end);
+        if(b.indexOf('.')>0)
+        {
+            b=b.replace(".", "");
+            System.out.println(b);
+            return b;
+        }
+        else if(b.indexOf("+")>0)
+        {
+            b=b.replace("+", "");
+            System.out.println(b);
+            return b;
+        }
+        return b;
+    }
+    public static void main(String []a)
+    {
+        email e=new email();
+        int n=a.length, count=0;
+        for(int i=0;i<n;i++)
+        {
+            a[i]=e.check(a[i]);
+        }
+        for(int s=0;s<n;s++)
+        {
+            for(int m=s + 1;m<n;m++)
+            {
+
+                if(a[s] != null && a[s].equals(a[m]))
+                {
+                    a[m] = null;
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]!=null)
+                count++;
+            }
+        System.out.println(count);
+        }
+
+    }
