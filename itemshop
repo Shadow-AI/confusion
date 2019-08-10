@@ -1,0 +1,52 @@
+/*        Marble 1
+        Large Marble	2
+        Bouncing ball	4
+        Special bouncing ball	8
+        Rubber ball	16
+        Tennis ball 32
+        Season ball	64
+        Beach ball	128
+        Volley ball 256
+        Basket ball 512
+        Foot ball	1024
+        Special edition Foot ball 2048*/
+import java.io.*;
+import java.lang.Math;
+public class itemshop
+{
+    int money, i;
+
+    itemshop(int money)
+    {
+        this.money=money;
+    }
+    void calc(int a[])
+    {
+
+        for(i=0;i<12;i++)
+        {a[i]=0;}
+        for(int i=11; i>=0;i--) {
+            while(money>=Math.pow(2,i))
+            {a[i]++; money-=Math.pow(2,i);}
+        }
+    }
+    int check(int []a)
+    {
+        int count=0;
+        for(int i=0;i<=11;i++)
+        {
+            count+=a[i];
+        }
+        return count;
+    }
+    public static void main(String args[])throws IOException
+    {
+        int[] a=new int[12];
+        BufferedReader bx=new BufferedReader(new InputStreamReader(System.in));
+        int m=Integer.parseInt(bx.readLine());
+        itemshop i=new itemshop(m);
+        i.calc(a);
+        int c=i.check(a);
+        System.out.println(c);
+    }
+}
