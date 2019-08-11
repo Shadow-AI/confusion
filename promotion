@@ -1,0 +1,53 @@
+import java.io.*;
+
+public class promotion {
+    boolean check(int []tmep, int m, int n, int lim)
+    {
+        for(int i=0;i<lim;i++)
+            if(tmep[i]==m || tmep[i]==n)
+                return false;
+            return true;
+    }
+    public static void main(String args[])throws IOException
+    {
+        promotion p=new promotion();
+        BufferedReader bx=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter limit");
+        int lim=Integer.parseInt(bx.readLine());
+        String t=bx.readLine();
+        int a[]=new int[lim];
+        for(int i=0, j=0;i<lim*2-1;i++)
+        {
+            //a[i]=Integer.parseInt(bx.readLine());
+            if(t.charAt(i)!=' ')
+            {
+                a[j]=Integer.parseInt(String.valueOf(t.charAt(i)));
+                j++;
+            }
+        }
+        int []tmep=new int[lim];
+        int []sum=new int[lim];
+        for(int i=0;i<lim;i++)
+        {sum[i]=0; tmep[i]=0;}
+        int k=0;
+        for(int i=0;i<lim;i++)
+        {
+            for(int j=i+1;j<lim;j++)
+            {
+                int m=a[i]*10+a[j];
+                int n=a[j]*10+a[i];
+                boolean what=p.check(tmep, m,n,k);
+                tmep[k]=m; k++;
+                tmep[k]=n; k++;
+                if(what==true)
+                sum[i]=a[i]&a[j];
+            }
+        }
+        int s=0;
+        for(int i=0; i<lim; i++)
+        {
+            s+=sum[i];
+        }
+        System.out.println(s%101);
+    }
+}
