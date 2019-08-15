@@ -1,0 +1,13 @@
+public class marbles{
+    int result(int n)
+    {
+        if(n%3==0)
+            return 2;
+        else return 1;
+    }
+    public static void main(String a[])
+    {
+        marbles m=new marbles();
+        System.out.println(m.result(22)+m.result(45)+m.result(26)+m.result(75));
+    }
+}
