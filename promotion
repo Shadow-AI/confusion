@@ -1,0 +1,48 @@
+import java.io.*;
+public class promotion{
+    int n, k;
+    //int b[]=new int[n*(n-1)/2];
+    promotion() {
+        k = 0;
+    }
+    void read()throws IOException
+    {
+        BufferedReader bx=new BufferedReader(new InputStreamReader(System.in));
+        n=Integer.parseInt(bx.readLine());
+        String input=bx.readLine();
+        //int m=input.length();
+        int a[]=new int[n];
+        String []temp=input.split(" ");
+        for(int i=0;i<temp.length;i++)
+        {
+            a[i]=Integer.parseInt(temp[i]);
+        }
+        result(a);
+    }
+    void result(int a[])
+    {
+        int k=0, sum=0;
+        int b[]=new int[n*(n-1)];
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                b[k++]=a[i]&a[j];
+            }
+
+        }
+        for(int i=0;i<b.length;i++)
+        {
+            sum+=b[i];
+        }
+        sum=sum%101;
+        display(sum);
+    }
+    void display(int sum){
+        System.out.println(sum);
+    }
+    public static void main(String args[])throws IOException{
+        promotion p=new promotion();
+        p.read();
+    }
+}
